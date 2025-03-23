@@ -8,9 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -21,7 +19,6 @@ sdist/
 var/
 wheels/
 share/python-wheels/
-*.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
@@ -56,7 +53,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -122,7 +118,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -164,3 +159,17 @@ cython_debug/
 .agentops/
 agentstack.log
 .agentstack*
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Project specific
+*.log
+agentops.log
+build/
+dist/
+*.egg-info/
+.env
+!.env.example

@@ -1,57 +1,42 @@
 #!/usr/bin/env python
 import sys
+import streamlit as st
 from crew import FitnessagentCrew
 import agentstack
 import agentops
-
-agentops.init(default_tags=agentstack.get_tags())
-
-instance = FitnessagentCrew().crew()
+from FitnessApp import *
 
 def run():
     """
-    Run the agent.
+    Run the Streamlit application with AgentStack integration.
     """
-    instance.kickoff(inputs=agentstack.get_inputs())
+    agentops.init(default_tags=agentstack.get_tags())
+    
 
-
-def train():
-    """
-    Train the crew for a given number of iterations.
-    """
-    try:
-        instance.train(
-            n_iterations=int(sys.argv[1]), 
-            filename=sys.argv[2], 
-            inputs=agentstack.get_inputs(), 
-        )
-    except Exception as e:
-        raise Exception(f"An error occurred while training the crew: {e}")
-
-
-def replay():
-    """
-    Replay the crew execution from a specific task.
-    """
-    try:
-        instance.replay(task_id=sys.argv[1])
-    except Exception as e:
-        raise Exception(f"An error occurred while replaying the crew: {e}")
-
-
-def test():
-    """
-    Test the crew execution and returns the results.
-    """
-    try:
-        instance.test(
-            n_iterations=int(sys.argv[1]), 
-            openai_model_name=sys.argv[2], 
-            inputs=agentstack.get_inputs(), 
-        )
-    except Exception as e:
-        raise Exception(f"An error occurred while replaying the crew: {e}")
-
+    if st.button("🚀 Generate The Plan"):
+        with st.spinner("⏳ AI is preparing your personalized fitness & nutrition plan..."):
+            # Prepare user data for the crew
+            user_data = {
+                'name': name,
+                'age': age,
+                'gender': gender,
+                'weight': weight,
+                'height': height,
+                'activity_level': activity_level,
+                'user_goal': user_goal,
+                'concerns': concerns,
+                'dietary_preferences': dietary_preferences,
+                'allergies': allergies,
+                'challenges': challenges,
+                'motivation_level': motivation_level
+            }
+            
+            # Initialize crew with user data
+            fitness_crew = FitnessagentCrew(user_data=user_data)
+            
+            # Execute the crew tasks
+            result = fitness_crew.crew().kickoff()
+            
 
 if __name__ == '__main__':
     run()

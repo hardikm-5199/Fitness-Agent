@@ -1,5 +1,69 @@
-# fitness_agent
+# Fitness Agent 🏋️‍♂️
 
+An AI-powered fitness assistant that helps create personalized workout plans, provides nutrition guidance, and offers motivation to help you achieve your fitness goals.
+
+## Features
+
+- 🎯 Personalized workout plans
+- 🥗 Nutrition guidance and meal planning
+- 💪 Exercise form tips and recommendations
+- 🎉 Motivational support and progress tracking
+- 📊 Adaptive planning based on your feedback
+
+## Project Structure
+
+```
+fitness_agent/
+├── src/
+│   ├── FitnessAgents.py    # Core agent implementations
+│   ├── FitnessApp.py       # Main application interface
+│   ├── FitnessTasks.py     # Task definitions
+│   ├── crew.py            # Agent crew configuration
+│   ├── main.py            # Entry point
+│   └── config/            # Configuration files
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Poetry for dependency management
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd fitness_agent
+```
+
+2. Install dependencies:
+```bash
+poetry install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+### Running the Agent
+
+To start the fitness agent:
+```bash
+poetry run python src/main.py
+```
+
+## Development
+
+This project uses AgentStack for agent management. To work with agents:
+
+- Generate new agent: `agentstack g a <agent_name> --wizard`
+- Add tools: `agentstack tools add`
+- List available tools: `agentstack tools list`
+- Run the project: `agentstack run`
 
 ## How to build your Crew Agent
 ### With the CLI
@@ -33,5 +97,9 @@ Replace <task_id> with the ID of the task you want to replay.
 If you need to reset the memory of your crew before running it again, you can do so by calling the reset memory feature:  
 `crewai reset-memory`  
 This will clear the crew's memory, allowing for a fresh start.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 > 🪩 Project built with [AgentStack](https://github.com/AgentOps-AI/AgentStack)
